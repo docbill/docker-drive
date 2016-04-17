@@ -14,6 +14,16 @@ To get started try the commands:
 	$ cd ~/docker-drive
 	$ ls -la
 
-Note: If you have configured docker to allow you to run without an sudo command, then edit the script to remove the sudo command.
+Where the docker-drive is the following script:
+
+	#!/bin/bash -e
+	[ -d ~/docker-drive ] || mkdir ~/docker-drive
+	exec docker run --rm -ti -v $HOME/docker-drive:/drive:z -e STAT="$(stat -c "%i %d" .)" docbill/docker-drive "$@"
+
+Note: If the :z attribute is not recognized then try:
+
+	#!/bin/bash -e
+	[ -d ~/docker-drive ] || mkdir ~/docker-drive
+	exec docker run --rm -ti -v $HOME/docker-drive:/drive -e STAT="$(stat -c "%i %d" .)" docbill/docker-drive "$@"
 
 
