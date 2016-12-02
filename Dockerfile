@@ -14,6 +14,8 @@ USER work-go
 RUN go get github.com/tools/godep && \
   go install github.com/tools/godep && \
   go get github.com/odeke-em/drive/drive-gen && \
+  go get golang.org/x/sys/unix && \
+  go get google.golang.org/appengine && \
   cd $GOPATH/src/github.com/odeke-em/drive/drive-gen/ && \
   git config --global user.email "nobody@nowhere.com" && \
   git config --global user.name "Noone" && \
